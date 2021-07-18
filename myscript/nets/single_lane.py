@@ -3,15 +3,15 @@ from flow.core.params import TrafficLightParams
 from flow.networks import Network
 import random
 
-lane_length = random.randint(1000, 2000)
+net_len = random.randint(200, 1000)
 ADDITIONAL_NET_PARAMS = {
-    "length" : lane_length,
+    "length" : net_len,
     "lanes" : 1,
     # nodes: start, tl, stop  ->  edges: before_tl, after_tl
-    "num_edges" : 1,
+    "num_edges" : 2,
     "num_nodes" : 3, 
-    "speed_limit" : 30,
-    "position_tl" : lane_length - random.randint(100, 300)
+    "speed_limit" : 20,
+    "position_tl" : net_len - 100
 }
 
 class SingleLane(Network):

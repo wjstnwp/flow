@@ -44,6 +44,11 @@ class TestEnv(Env):
 
     def compute_reward(self, rl_actions, **kwargs):
         """See parent class."""
+        
+        ids = self.k.vehicle.get_ids()
+        time = [self.k.vehicle.get_timestep(veh_id) for veh_id in ids]
+        # print(time)
+
         if "reward_fn" in self.env_params.additional_params:
             return self.env_params.additional_params["reward_fn"](self)
         else:
@@ -52,3 +57,4 @@ class TestEnv(Env):
     def get_state(self, **kwargs):
         """See class definition."""
         return np.array([])
+
