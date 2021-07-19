@@ -436,3 +436,13 @@ def miles_per_gallon(env, veh_ids=None, gain=.001):
     mpg /= 1609.0
 
     return mpg * gain
+
+def veh_travel_time(env):
+    ids = env.k.vehicle.get_ids()
+    pos_time = [[env.k.vehicle.get_x_by_id(veh_id), env.k.vehicle.get_speed(veh_id)] for veh_id in ids]
+    travel_time = []
+    for temp in pos_time:
+        if temp[0] == env.k.network.edge_length("before_tl"):
+            travel_time.append(temp[1])
+    
+    return -np.mean(travel_time)
